@@ -35,7 +35,7 @@ export class EmployeeAddComponent implements OnInit {
   }
 
   TakeHome(){
-    this.nameEvent.emit("TakeHome");
+    this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
     this.router.navigateByUrl('');
   }
