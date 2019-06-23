@@ -42,6 +42,7 @@ export class EmployeeDataService{
         var body ={
             Fname: emp.firstname, Lname: emp.lastname, Email: emp.email, gender: emp.gender, ID: emp.id
         }
+        return this.http.delete<Employee>(ROOT_URL + '/Employees/' + emp.id);
     }
 }
 

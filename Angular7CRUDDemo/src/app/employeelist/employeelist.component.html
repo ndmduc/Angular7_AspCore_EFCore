@@ -46,7 +46,7 @@
           <h4 class="modal-primary">Employee Add</h4>
         </div>
         <div class="modal-body">
-          <app-employee-add #empadd (nameEvent)="RefreshData($event)"></app-employee-add>
+           <app-employee-add #empadd (nameEvent)="RefreshData($event)"></app-employee-add> 
         </div>
         <div class="modal-footer">
           <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button> 
@@ -63,7 +63,7 @@
           <h4 class="modal-primary">Employee Edit</h4>
         </div>
         <div class="modal-body">
-          <app-employeeupdate (nameEvent)="RefreshData($event)" [isReset]="resetForm" #regForm></app-employee-add>
+          <app-employeeupdate (nameEvent)="RefreshData($event)" [isReset]="resetForm" #regForm></app-employeeupdate>
         </div>
         <div class="modal-footer">
           <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button> 

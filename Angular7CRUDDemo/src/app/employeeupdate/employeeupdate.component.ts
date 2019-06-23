@@ -11,9 +11,9 @@ import { Employee } from 'src/Models/Employee';
 })
 export class EmployeeupdateComponent implements OnInit {
   @Output() nameEvent = new EventEmitter<string>();
-  @ViewChild('closeBtn') cb: ElementRef;
+  @ViewChild('closeBtn', {static: false}) cb: ElementRef;
   @Input() reset:boolean = false;
-  @ViewChild('regForm') myForm: NgForm;
+  @ViewChild('regForm', {static: false}) myForm: NgForm;
   @Input() isReset: boolean = false;
   objtempemp: Employee;
   @Input() objemp: Employee = new Employee();

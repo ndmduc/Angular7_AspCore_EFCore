@@ -29,7 +29,7 @@ namespace Angular7CRUDDemo.Backend
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors();
             services.AddDbContext<AppDbContext>
-                (opt => opt.UseSqlServer(@"Data Source=MANGESH\SQL2016;Initial Catalog=Angular7Demo;User ID=sa;Password=sa"));
+                (opt => opt.UseSqlServer(@"Server=(localdb)\\v11.0;Initial Catalog=PhotoGallery;Trusted_Connection=True;MultipleActiveResultSets=true"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

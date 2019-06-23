@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeupdateComponent } from './employeeupdate/employeeupdate.component';
 import { EmployeelistComponent } from './employeelist/employeelist.component';
+import { EmployeeDataService } from './DataService/EmployeeDataService';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,11 @@ import { EmployeelistComponent } from './employeelist/employeelist.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EmployeeDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,8 +12,8 @@ import { getNsPrefix } from '../../../node_modules/@angular/compiler';
   styleUrls: ['./employeelist.component.css']
 })
 export class EmployeelistComponent implements OnInit {
-  @ViewChild('empadd') addcomponent: EmployeeAddComponent;
-  @ViewChild('regForm') editcomponent: EmployeeupdateComponent;
+  @ViewChild('empadd', {static: false}) addcomponent: EmployeeAddComponent;
+  @ViewChild('regForm', {static: false}) editcomponent: EmployeeupdateComponent;
 
   empList: Employee[];
   dataavailable: boolean = false;
