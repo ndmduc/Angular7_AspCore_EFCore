@@ -24,7 +24,7 @@ namespace Angular7CRUDDemo.Backend.Controllers
         [HttpGet]
         public IEnumerable<Employee> Get()
         {
-            return this.context.tblEmployee;
+            return this.context.Employee;
         }
 
         // GET: api/Employees/5
@@ -36,7 +36,7 @@ namespace Angular7CRUDDemo.Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            var employee = await this.context.tblEmployee.FindAsync(id);
+            var employee = await this.context.Employee.FindAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -84,17 +84,22 @@ namespace Angular7CRUDDemo.Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> PostEmployee([FromBody] Employee employee)
         {
-
-
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                this.context.Employee.Add(employee);
+                await this.context.SaveChangesAsync();
+
+                return CreatedAtAction("GetEmployees", new { id = employee.ID }, employee);
             }
-
-            this.context.tblEmployee.Add(employee);
-            await this.context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEmployee", new { id = employee.ID }, employee);
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // DELETE: api/Employees/5
@@ -106,13 +111,13 @@ namespace Angular7CRUDDemo.Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            var employee = await this.context.tblEmployee.FindAsync(id);
+            var employee = await this.context.Employee.FindAsync(id);
             if (employee == null)
             {
                 return NotFound();
             }
 
-            this.context.tblEmployee.Remove(employee);
+            this.context.Employee.Remove(employee);
             await this.context.SaveChangesAsync();
 
             return Ok(employee);
@@ -120,7 +125,7 @@ namespace Angular7CRUDDemo.Backend.Controllers
 
         private bool EmployeeExists(int id)
         {
-            return this.context.tblEmployee.Any(e => e.ID == id);
+            return this.context.Employee.Any(e => e.ID == id);
         }
     }
 }

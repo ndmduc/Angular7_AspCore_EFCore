@@ -19,6 +19,9 @@ namespace Angular7CRUDDemo.Backend
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            //var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            //Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -26,10 +29,12 @@ namespace Angular7CRUDDemo.Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string sqlConnectionString = "Server=(localdb)\\v11.0;Initial Catalog=EmployeeDemo;Trusted_Connection=True;MultipleActiveResultSets=true";
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors();
             services.AddDbContext<AppDbContext>
-                (opt => opt.UseSqlServer(@"Server=(localdb)\\v11.0;Initial Catalog=PhotoGallery;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                (opt => opt.UseSqlServer(sqlConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

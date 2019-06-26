@@ -13,7 +13,7 @@ namespace Angular7CRUDDemo.Backend
 
         }
 
-        public DbSet<Employee> tblEmployee { get; set; }
+        public DbSet<Employee> Employee { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
