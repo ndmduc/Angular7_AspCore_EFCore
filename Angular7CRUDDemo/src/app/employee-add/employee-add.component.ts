@@ -10,10 +10,10 @@ import { EmployeeDataService } from '../DataService/EmployeeDataService';
   styleUrls: ['./employee-add.component.css']
 })
 export class EmployeeAddComponent implements OnInit {
-  @Input() clearData: boolean = false;
+  @Input() clearData = false;
   @Output() nameEvent = new EventEmitter<string>();
-  objtempemp:Employee;
-  @Input() objemp:Employee = new Employee();
+  objtempemp: Employee;
+  @Input() objemp: Employee = new Employee(); // variable passed from employee list component.
   @ViewChild('closeBtn', {static: false}) cb: ElementRef;
 
   constructor(private dataservice: EmployeeDataService, private router: Router) { }

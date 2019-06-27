@@ -12,6 +12,8 @@ import { getNsPrefix } from '../../../node_modules/@angular/compiler';
   styleUrls: ['./employeelist.component.css']
 })
 export class EmployeelistComponent implements OnInit {
+  // empadd: variable for add component modal
+  // regForm: variable for edi component modal.
   @ViewChild('empadd', {static: false}) addcomponent: EmployeeAddComponent;
   @ViewChild('regForm', {static: false}) editcomponent: EmployeeupdateComponent;
 
@@ -31,12 +33,12 @@ export class EmployeelistComponent implements OnInit {
       console.log(this.empList);
       if (this.empList.length > 0){
         this.dataavailable = true;
-      }else{
+      } else {
         this.dataavailable = false;
       }
     }, err => {
       console.log(err);
-    })
+    });
   }
 
   deleteconfirmation(id: string){
@@ -46,7 +48,7 @@ export class EmployeelistComponent implements OnInit {
       this.dataservice.DeleteEmployee(this.tempemp).subscribe(res => {
         alert('Deleted successfully');
         this.LoadData();
-      })
+      });
     }
   }
 
@@ -60,8 +62,8 @@ export class EmployeelistComponent implements OnInit {
 
   loadNewForm(id: string, email: string, firstname: string, lastname: string, gender: number){
    console.log(gender);
-    this.editcomponent.objemp.email =email;
-    this.editcomponent.objemp.firstname =firstname;
+   this.editcomponent.objemp.email = email;
+    this.editcomponent.objemp.firstname = firstname;
     this.editcomponent.objemp.lastname =lastname;
     this.editcomponent.objemp.id =id;
     this.editcomponent.objemp.gender =gender;
